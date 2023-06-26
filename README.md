@@ -2,6 +2,17 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.1.1.
 
+## Environments
+
+To run the project, an `environment.ts` (or `environment.development.ts`) file should be added to the `/src/environments/` folder. The format is as follows:
+
+```javascript
+export const environment = {
+  production: true, // set to false for non-production environment
+  polgygonStockApiKey: "YOUR API KEY HERE", // get key from https://polygon.io/
+};
+```
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
