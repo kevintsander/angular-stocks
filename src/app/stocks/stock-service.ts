@@ -23,7 +23,7 @@ export class StockService {
   getStock(abbreviation: string) {
     const date = this.getLastDayString();
     console.log(date);
-    this.http.get<{ stockResult: any }>(`${API_URL}/aggs/ticker/${abbreviation}/range/12/minute/${date}/${date}?adjusted=true&sort=asc&limit=120&apiKey=${environment.polgygonStockApiKey}`)
+    this.http.get<{ stockResult: any }>(`${API_URL}/aggs/ticker/${abbreviation}/range/12/minute/${date}/${date}?adjusted=true&sort=asc&limit=5000&apiKey=${environment.polgygonStockApiKey}`)
       .pipe(
         map((stockResult: any) => {
           return {
