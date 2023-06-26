@@ -13,7 +13,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { ReactiveFormsModule } from '@angular/forms';
-import { StockDisplayComponent } from './stock-display/stock-display.component';
+import { StockDisplayComponent } from './stocks/stock-display/stock-display.component';
 
 @NgModule({
   declarations: [
