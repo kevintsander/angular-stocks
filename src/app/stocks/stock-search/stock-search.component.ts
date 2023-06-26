@@ -18,7 +18,9 @@ export class StockSearchComponent {
     const searchAbbreviation = this.searchForm.value.search;
     if (searchAbbreviation) {
       console.log(this.searchForm.value.search);
+
       this.stockService.getStock(searchAbbreviation);
     }
   }
+
 }

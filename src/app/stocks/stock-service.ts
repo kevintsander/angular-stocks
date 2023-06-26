@@ -21,7 +21,8 @@ export class StockService {
   }
 
   getStock(abbreviation: string) {
-    const date = new Date().toISOString().split('T')[0];
+    const date = this.getLastDayString();
+    console.log(date);
     this.http.get<{ stockResult: any }>(`${API_URL}/aggs/ticker/${abbreviation}/range/12/minute/${date}/${date}?adjusted=true&sort=asc&limit=120&apiKey=${environment.polgygonStockApiKey}`)
       .pipe(
         map((stockResult: any) => {
@@ -40,4 +41,30 @@ export class StockService {
         this.stockResult.next(stock);
       })
   }
+
+  protected getLastDayString(): String {
+    const lastDay = this.getLastWorkingDay();
+    var tzoffset = lastDay.getTimezoneOffset() * 60000; //offset in milliseconds
+    return (new Date(lastDay.getTime() - tzoffset)).toISOString().slice(0, -1).split('T')[0];
+
+  }
+
+  protected getLastWorkingDay(): Date {
+    const lastWorkingDay = new Date();
+
+    while (!this.isWorkingDay(lastWorkingDay)) {
+      lastWorkingDay.setDate(lastWorkingDay.getDate() - 1)
+    }
+    console.log(lastWorkingDay.toISOString());
+    return lastWorkingDay;
+  }
+
+  private isWorkingDay(date: Date) {
+    const day = date.getDay();
+
+    const isWeekday = (day > 0 && day < 6);
+
+    return isWeekday; // && !isPublicHoliday?
+  }
+
 }

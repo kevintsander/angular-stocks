@@ -1,7 +1,7 @@
 export interface Stock {
   abbreviation: string,
   price: [{
-    time: number,
+    time: string,
     value: number
   }]
 }
