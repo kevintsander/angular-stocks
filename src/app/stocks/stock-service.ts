@@ -51,9 +51,10 @@ export class StockService {
 
   private getLastWorkingDay(): Date {
     const lastWorkingDay = new Date();
+    lastWorkingDay.setDate(lastWorkingDay.getDate() - 1);
 
     while (!this.isWorkingDay(lastWorkingDay)) {
-      lastWorkingDay.setDate(lastWorkingDay.getDate() - 1)
+      lastWorkingDay.setDate(lastWorkingDay.getDate() - 1);
     }
     console.log(lastWorkingDay.toISOString());
     return lastWorkingDay;
