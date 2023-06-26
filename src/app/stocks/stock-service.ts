@@ -28,9 +28,10 @@ export class StockService {
         map((stockResult: any) => {
           return {
             abbreviation: stockResult.ticker,
+            date: date,
             price: stockResult.results.map((result: any) => {
               return {
-                time: result.t,
+                time: this.getTimeStringFromUnixTime(result.t),
                 value: result.c
               };
             })
@@ -42,14 +43,13 @@ export class StockService {
       })
   }
 
-  protected getLastDayString(): String {
+  private getLastDayString(): string {
     const lastDay = this.getLastWorkingDay();
     var tzoffset = lastDay.getTimezoneOffset() * 60000; //offset in milliseconds
     return (new Date(lastDay.getTime() - tzoffset)).toISOString().slice(0, -1).split('T')[0];
-
   }
 
-  protected getLastWorkingDay(): Date {
+  private getLastWorkingDay(): Date {
     const lastWorkingDay = new Date();
 
     while (!this.isWorkingDay(lastWorkingDay)) {
@@ -67,4 +67,9 @@ export class StockService {
     return isWeekday; // && !isPublicHoliday?
   }
 
+  private getTimeStringFromUnixTime(unixTime: number) {
+    // Create a new JavaScript Date object based on the timestamp
+    const date = new Date(unixTime);
+    return date.toLocaleTimeString(navigator.language, { hour: '2-digit', minute: '2-digit' });
+  }
 }

@@ -15,6 +15,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { ReactiveFormsModule } from '@angular/forms';
 import { StockDisplayComponent } from './stocks/stock-display/stock-display.component';
 
+import { NgChartsModule } from 'ng2-charts';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,6 +31,7 @@ import { StockDisplayComponent } from './stocks/stock-display/stock-display.comp
     MatInputModule,
     MatButtonModule,
     MatIconModule,
+    NgChartsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
     HttpClientModule

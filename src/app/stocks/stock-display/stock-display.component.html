@@ -1,3 +1,4 @@
 <div *ngIf="stock">
   <p>{{stock.abbreviation}}</p>
+  <canvas baseChart class="chart" [data]="lineChartData" [type]="lineChartType"></canvas>
 </div>
