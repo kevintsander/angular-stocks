@@ -1,5 +1,7 @@
 # AngularStocks
 
+This is a simple Angular demo, which uses Angular Material and [ng2-charts](https://valor-software.com/ng2-charts/) to display the previous business day's stock data from https://polygon.io/
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.1.1.
 
 ## Environments
